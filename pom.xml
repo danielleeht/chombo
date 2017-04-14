@@ -175,7 +175,11 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
 			<id>clojars.org</id>
 			<url>http://clojars.org/repo</url>
 		</repository>
-         
+		<repository>
+			<id>HDP</id>
+			<name>HDP Releases</name>
+			<url>http://repo.hortonworks.com/content/repositories/releases/</url>
+		</repository>
     </repositories>
 
 	<profiles>
@@ -184,17 +188,20 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
 			<activation>
 				<activeByDefault>true</activeByDefault>
 			</activation>
+			<properties>
+				<hadoop.version>2.7.3.2.5.0.0-1245</hadoop.version>
+			</properties>
 			<dependencies>
-        		<dependency>
-            		<groupId>org.apache.hadoop</groupId>
-            		<artifactId>hadoop-core</artifactId>
-            		<version>2.5.0-mr1-cdh5.3.1</version>
-        		</dependency>
+        		<!--<dependency>-->
+            		<!--<groupId>org.apache.hadoop</groupId>-->
+            		<!--<artifactId>hadoop-core</artifactId>-->
+            		<!--<version>2.7.3</version>-->
+        		<!--</dependency>-->
         
         		<dependency>
             		<groupId>org.apache.hadoop</groupId>
             		<artifactId>hadoop-client</artifactId>
-            		<version>2.5.0-mr1-cdh5.3.1</version>
+            		<version>${hadoop.version}</version>
         		</dependency>
 		
 			</dependencies>
@@ -202,35 +209,38 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
 		
 		<profile>
 			<id>yarn</id>
+            <properties>
+                <hadoop.version>2.7.3.2.5.0.0-1245</hadoop.version>
+            </properties>
 			<dependencies>
         		<dependency>
             		<groupId>org.apache.hadoop</groupId>
             		<artifactId>hadoop-mapreduce-client-core</artifactId>
-            		<version>2.5.0-cdh5.3.1</version>
+            		<version>${hadoop.version}</version>
         		</dependency>
         
         		<dependency>
             		<groupId>org.apache.hadoop</groupId>
             		<artifactId>hadoop-common</artifactId>
-            		<version>2.5.0-cdh5.3.1</version>
+            		<version>${hadoop.version}</version>
         		</dependency>
         		
         		<dependency>
             		<groupId>org.apache.hadoop</groupId>
-            		<artifactId>hadoop-mapreduce-client-hs</artifactId>
-            		<version>2.5.0-cdh5.3.1</version>
+            		<artifactId>hadoop-mapreduce-client-jobclient</artifactId>
+            		<version>${hadoop.version}</version>
         		</dependency>
         		
         		<dependency>
             		<groupId>org.apache.hadoop</groupId>
             		<artifactId>hadoop-auth</artifactId>
-            		<version>2.5.0-cdh5.3.1</version>
+            		<version>${hadoop.version}</version>
         		</dependency>
         		
         		<dependency>
             		<groupId>org.apache.hadoop</groupId>
             		<artifactId>hadoop-hdfs</artifactId>
-            		<version>2.5.0-cdh5.3.1</version>
+            		<version>${hadoop.version}</version>
         		</dependency>
 
 			</dependencies>
