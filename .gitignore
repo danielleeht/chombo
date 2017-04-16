@@ -19,4 +19,5 @@ spark/dist/
 .cache
 .class
 .ivy2
-
+.idea
+*.iml
